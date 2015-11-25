@@ -86,7 +86,7 @@ describe Bib do
 	    end
 	end
 	
-	describe "List" do
+	describe "Clase List" do
 		
 		it "Se puede insertar un elemento" do
 			@List.add(@Lib2)
@@ -119,7 +119,7 @@ describe Bib do
 		end
 	end
 	
-	describe "Node" do
+	describe "Expectativas para Node" do
 		
 		it "Debe existir un Nodo de la lista con sus datos y su siguiente" do
 			@List.add(@Lib2)
@@ -136,6 +136,13 @@ describe Bib do
 	describe "Jerarquias" do 
 		it "Existe una jerarquia en las clases" do
 			expect(@Lib1).to be_a Bib::Book	
+		end
+	end
+	
+	describe "Expectativas Comparable" do
+		it "Comparacion entre dos referencias" do
+			expect(@Lib1 <=> @Lib1).to eq(true)
+			expect(@Lib1 <=> @Lib2).to eq(false)
 		end
 	end
 end
