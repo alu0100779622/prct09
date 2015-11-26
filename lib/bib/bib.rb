@@ -1,7 +1,7 @@
 module Bib
 	
   	class Ref
-
+		include Comparable
 		attr_accessor :autores, :titulo, :serie, :editorial, :numEdicion, :fecha, :numISBN
 		
 		def initialize(a,b,c,d,e,f,g)
@@ -16,6 +16,14 @@ module Bib
 
 		def to_s
 			"#{autores.join(", ")}.\n#{titulo}\n(#{serie})\n#{editorial}; #{numEdicion} edicion #{fecha}\n#{numISBN.join("\n")}"
+		end
+		
+		def <=>(other)
+			@autores <=> other.autores && @fecha <=> other.fecha
+		end
+		
+		def ==(other)
+			@autores == other.autores && @fecha == other.fecha
 		end
 	end
 	
@@ -61,7 +69,7 @@ module Bib
 		end
 		
 		def add (ref)
-			if ref.instance_of? Book and Journal
+			if ref.is_a? Ref
 				if @head == nil
 					@head = Node.new(ref, nil, nil)
 					@tail = nil

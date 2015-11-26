@@ -6,7 +6,7 @@ describe Bib do
 		@Lib1 = Bib::Book.new(["Dave Thomas", "Andy Hunt", "Chad Fowler"],
 			"Programming Ruby 1.9 & 2.0: The Pragmatic Programmers' Guide",
 			"The Facets of Ruby",
-			"Pragmatic Bookshelf",4,"(July 7,2013)",
+			"Pragmatic Bookshelf",4,"July 7,2013",
 			["ISBN-13: 978-1937785499", "ISBN-10: 1937785491"])
 		@Lib2 = Bib::Book.new("Scott Chacon", 
 			"Pro Git 2009th Edition",
@@ -76,13 +76,13 @@ describe Bib do
 			@Lib1.numEdicion == 4
 		end
 		it "Existe un metodo para obtener la fecha de publicacion." do
-			@Lib1.fecha =="(July 7,2013)"
+			@Lib1.fecha =="July 7,2013"
 		end
 		it "Existe un metodo para obtener el listado de ISBN" do
 			@Lib1.numISBN == ["ISBN-13: 978-1937785499", "ISBN-10: 1937785491"]
 		end
 		it "Existe un metodo para obtener la referencia formateada" do
-		  expect(@Lib1.to_s).to eq("Dave Thomas, Andy Hunt, Chad Fowler.\nProgramming Ruby 1.9 & 2.0: The Pragmatic Programmers' Guide\n(The Facets of Ruby)\nPragmatic Bookshelf; 4 edicion (July 7,2013)\nISBN-13: 978-1937785499\nISBN-10: 1937785491")
+		  expect(@Lib1.to_s).to eq("Dave Thomas, Andy Hunt, Chad Fowler.\nProgramming Ruby 1.9 & 2.0: The Pragmatic Programmers' Guide\n(The Facets of Ruby)\nPragmatic Bookshelf; 4 edicion July 7,2013\nISBN-13: 978-1937785499\nISBN-10: 1937785491")
 	    end
 	end
 	
@@ -140,9 +140,33 @@ describe Bib do
 	end
 	
 	describe "Expectativas Comparable" do
+		before :each do
+			@Book1 = Bib::Book.new("Pepe",
+			"Libro1",
+			nil,
+			"editorial",nil,1998,
+			nil)
+			@Book2 = Bib::Book.new("Pepe",
+			"Libro2",
+			nil,
+			"editorial",nil,2000,
+			nil)
+			@Book3 = Bib::Book.new("Pepe",
+			"Libro3",
+			nil,
+			"editorial",nil,2004,
+			nil)
+		end
+		
 		it "Comparacion entre dos referencias" do
-			expect(@Lib1 <=> @Lib1).to eq(true)
-			expect(@Lib1 <=> @Lib2).to eq(false)
+			expect(@Lib1 == @Lib1).to eq(true)
+			expect(@Lib1 == @Lib2).to eq(false)
+		end
+		it "Ref1 < Ref2" do
+			expect(@Book1 < @Book2).to eq(true)
+		end
+		it "Ref1 >= Ref2" do
+			expect(@Book1 >= @Book3).to eq(false)
 		end
 	end
 end
