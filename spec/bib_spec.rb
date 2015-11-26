@@ -16,7 +16,7 @@ describe Bib do
         @Lib3 = Bib::Book.new(["David Flanagan", "Yukihiro Matsumoto"],
         	"The Ruby Programming Language",
         	nil,
-            "O’Reilly Media","1 edition","February 4,2008",
+            "O'Reilly Media","1 edition","February 4,2008",
             ["ISBN-10: 0596516177", "ISBN-13: 978-0596516178"])
         @Lib4 = Bib::Book.new(["David Chelimsky", "Dave Astels", "Bryan Helmkamp", "Dan North", "Zach Dennis", "Aslak Hellesoy"],
             "The RSpec Book: Behaviour Driven Development with RSpec, Cucumber, and Friends (The Facets of Ruby)",
@@ -26,7 +26,7 @@ describe Bib do
         @Lib5 = Bib::Book.new("Richard E. Silverman",
         	"Git Pocket Guide",
         	nil,
-        	"O’Reilly Media","1 edition","August 2,2013",
+        	"O'Reilly Media","1 edition","August 2,2013",
             ["ISBN-10: 1449325866","ISBN-13: 978-1449325862"])
             
         @List = Bib::List.new @Lib1
