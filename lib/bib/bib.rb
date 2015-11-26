@@ -58,9 +58,8 @@ module Bib
 	end
 	
 	class List
-		
+		include Enumerable
     	Node = Struct.new(:value, :prev, :next)
-    	
 		attr_accessor :head, :tail
 		
 		def initialize(ref)
@@ -99,6 +98,20 @@ module Bib
 				@tail = nil
 			end
 			return x.value
+		end
+		
+		def each
+			if(@head == nil)
+				yield nil
+			elsif(@tail == nil)
+				yield @head.value
+			elsif
+				aux=@head
+				while(aux!=nil)
+					yield aux.value
+					aux = aux.next
+				end
+			end
 		end
 	end
 end

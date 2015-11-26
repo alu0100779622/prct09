@@ -30,6 +30,7 @@ describe Bib do
             ["ISBN-10: 1449325866","ISBN-13: 978-1449325862"])
             
         @List = Bib::List.new @Lib1
+        @ListVoid = Bib::List.new nil
         
 	end
 
@@ -173,7 +174,16 @@ describe Bib do
 	describe "Expectativas Enumerable" do
 		it "Comprobrando el metodo all?" do
 			expect(@List.all?).to eq(true)
+			expect(@ListVoid.all?).to eq(false)
 		end
-		
+		it "Comprobrando el metodo any?" do
+    		expect(@List.any?).to eq(true)
+      		expect(@ListVoid.any?).to eq(false)
+		end 
+		it "Comprobrando el metodo count" do
+      		expect(@List.count).to eq(1)
+      		@List.add @Lib2
+      		expect(@List.count).to eq(2)
+    	end
 	end
 end
