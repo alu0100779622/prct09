@@ -169,4 +169,11 @@ describe Bib do
 			expect(@Book1 >= @Book3).to eq(false)
 		end
 	end
+	
+	describe "Expectativas Enumerable" do
+		it "Comprobrando el metodo all?" do
+			expect(@List.all?).to eq(true)
+		end
+		
+	end
 end
